@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Marked in the browser</title>
+    <script src="vue.js"></script>
+  </head>
+
+  <body>
+    <!-- <p v-on:mousemove.stop="cmp(10, $event)">
+      <span v-on:mousemove.stop.prevent>マグロ</span>
+      あああ
+    </p>
+    <a v-on:click href="aaa">aaa</a>
+    X {{ x }} Y {{ y }}
+    <input type="test" v-on:keyup.space="ma"> -->
+    <!-- <button @click="countUp">aa</button> -->
+    <!-- <p>{{ message }}</p>
+    <button @click="message += 1">+1</button>
+    <p>{{ less }}</p> -->
+    <!-- <button @click="get = !get">切り替え</button>
+    <h1 :class="[{color: get}, blue]">hhh</h1> -->
+    <!-- <h1 :style="[textcolor, bs]">hello2</h1> -->
+    <!-- <p v-if="ok">OKmaru</p>
+<p v-else-if='mo'>aaa</p>
+<p v-else>not</p> -->
+    <!-- <p v-show="ok">hi</p> -->
+
+    <!-- <ul>
+        <li v-for="(value, key, index) in oj">
+          ({{index}}) {{key}}--{{value}}
+        </li>
+      </ul>
+      <template v-for="n in 10">
+        <li>({{n}})</li>
+      </template> -->
+    <!-- <ul> -->
+    <!--
+        <div v-for="(fruit, i) of fruits" :key="fruit">
+          <p>{{fruit}}</p>
+          <input type="text" :value="i + 1" />
+        </div>
+      </ul>
+      <button @click="rm">rm</button> -->
+
+    <!-- <div id="app">
+      <p>{{mm}}</p>
+      <p>{{name}}</p>
+      <hello></hello>
+      <button @click="name = 'aaaaaaaa'">in1を変更</button>
+    </div>
+    <div id="app2"></div>
+    <div id="app4">
+      <hello></hello>
+      <h1>hiiiiiiiiiii {{name}}</h1>
+      <button @click="name = 'ooda'">namae kaeru</button>
+      <button @click="destroy">破壊</button>
+    </div>
+    <input type="text" />
+    <button></button>
+    <hello></hello> -->
+    <div id="app">
+      <mc></mc>
+      <mc></mc>
+      <mc></mc>
+    </div>
+  </body>
+  <!-- --------------------------------------------- -->
+  <script>
+    var component = {
+      data: function() {
+        return {
+          number: 12,
+        };
+      },
+      template: `<p>いいね{{number}}<button @click='inc'>+1</button></p>`,
+      methods: {
+        inc: function() {
+          this.number += 1;
+        },
+      },
+    };
+    new Vue({
+      el: "#app",
+      components: {
+        mc: component,
+      },
+    });
+
+    // Vue.component("hello", {
+    //   template: "<h1>aaa</h1>",
+    // });
+    // new Vue({
+    //   el: "#app4",
+    //   methods: {
+    //     name: "kaito",
+    //   },
+    //   data: {
+    //     name: "おういし",
+    //   },
+    //   beforeCreate: function() {
+    //     console.log("beforeCreate");
+    //   },
+    //   created: function() {
+    //     console.log("Created");
+    //   },
+    //   beforeMount: function() {
+    //     console.log("beforeMount");
+    //   },
+    //   mounted: function() {
+    //     console.log("Mounted");
+    //   },
+    //   beforeUpdate: function() {
+    //     console.log("beforeUpdate");
+    //   },
+    //   updated: function() {
+    //     console.log("Updated");
+    //   },
+    //   beforeDestroy: function() {
+    //     console.log("beforeDestroy");
+    //   },
+    //   destroyed: function() {
+    //     console.log("destoryed");
+    //   },
+    //   methods: {
+    //     destroy: function() {
+    //       console.log("破壊完了");
+    //       this.$destroy();
+    //     },
+    //   },
+    // });
+
+    // var vm = new Vue({
+    //   el: "#app",
+    //   data: {
+    //     mm: "in1",
+    //     name: "in2",
+    //   },
+    // });
+
+    // new Vue({
+    //   data: {
+    //     name: "おーいし",
+    //   },
+    //   render: function(createElement) {
+    //     return createElement("h1", "hellow" + this.name);
+    //   },
+    // }).$mount("#app2");
+
+    // template: "<h1>hi {{name}</h1>",
+    // computed: {
+    //   my: function () {
+    //     return this.$data;
+    //   },
+    // },
+    // var vm2 = new Vue({
+    //   el: "#app2",
+    //   data: {
+    //     mm: "in2",
+    //   },
+    //   methods: {
+    //     cm1: function () {
+    //       vm1.mm = "のっとったどーーーーーーー";
+    //     },
+    //   },
+    // });
+
+    // oj: {
+    //   fn: "aaa",
+    //   ln: "bbb",
+    //   age: 21,
+    // },
+    // textcolor: {
+    //   color: 'red',
+    //     },
+    // bs: {
+    //   fontSize: '100px',
+    //     }
+    // computed: {
+    //   co: function () {
+    //     return { red: !this.get, 'blue': this.get }
+    //   }
+    // }
+    // computed: {
+    //   less: function () {
+    //     console.log('com');
+    //     return this.message > 3 ? '3より上' : '3以下'
+    //   }
+    // },
+    // watch: {
+    //   message: function () {
+    //     var vm = this;
+    //     setTimeout(function () {
+    //       vm.message = 0
+    //     }, 3000)
+    //   }
+    // }
+    // number: 0,
+    //   event: 'click',
+    //     x: 0,
+    //       y: 0,
+    // to: { href: "http://google.com", id: 31 }
+    // sayHi() {
+    //   this.message = "hello vue"
+    //   return this.message
+    // }
+    // cmp: function (dn, event) {
+    //   this.x = event.clientX / dn;
+    //   this.y = event.clientY / dn;
+    // },
+    // ma() {
+    //   alert("aaa");
+    // },
+    // vm.$watch('a', function (newValue, oldValue) {
+    //   // このコールバックは `vm.a` の値が変わる時に呼ばれます
+    // })
+
+    // var data = { a: 1 }
+    // var vm = new Vue({
+    //   data: {
+    //     newTodoText: '',
+    //     visitCount: 0,
+    //     hideCompletedTodos: false,
+    //     todos: [],
+    //     error: null
+    //   }
+    // })
+    // vm.b = 'h1'
+
+    // var app8 = new Vue({
+    //   el: "#app-8",
+    //   data: {
+    //     todos: [{
+    //       text: "111"
+    //     }, {
+    //       text: "222"
+    //     }],
+    //     newTodo: ""
+    //   },
+    //   methods: {
+    //     add: function () {
+    //       this.todos.push({
+    //         text: this.newTodo,
+    //       })
+    //       this.newTodo = this.newTodo.value = '';
+    //     }
+    //   }
+    // })
+    //     reverseMessage: function () {
+    //       this.message = this.message.split('').reverse().join('')
+    //     }
+
+    // var app7 = new Vue({
+    //   el: '#app-7',
+    //   data: {
+    //     groceryList: [
+    //       { id: 0, text: 'Vegetables' },
+    //       { id: 1, text: 'Cheese' },
+    //       { id: 2, text: 'Whatever else humans are supposed to eat' }
+    //     ]
+    //   }
+    // })
+    // // var app = new Vue(...)
+    // Vue.component('todo-item', {
+    //   props: ['todo'],
+    //   template: '<li>{{ todo.text }}</li>'
+    // })
+    // // todo-item と呼ばれる新しいコンポーネントを定義
+    // Vue.component('todo-item', {
+    //   template: '<li>This is a todo</li>'
+    // })
+
+    // Vue.component('todo-item', {
+    //   // todo-item コンポーネントはカスタム属性のような "プロパティ" で受け取ります。
+    //   // このプロパティは todo と呼ばれます。
+    //   props: ['todo'],
+    //   template: '<li>{{ todo.text }}</li>'
+    // })
+
+    // var app6 = new Vue({
+    //   el: '#app-6',
+    //   data: {
+    //     name: ""
+    //   }
+    // })
+
+    // var app5 = new Vue({
+    //   el: "#app-5",
+    //   data: {
+    //     message: 'hello'
+    //   },
+    //   methods: {
+    //     reverseMessage: function () {
+    //       this.message = this.message.split('').reverse().join('')
+    //     }
+    //   }
+    // })
+
+    // var app4 = new Vue({
+    //   el: '#app-4',
+    //   data: {
+    //     todos: [
+    //       { text: 'Learn JavaScript' },
+    //       { text: 'Learn Vue' },
+    //       { text: 'Build something awesome' }
+    //     ]
+    //   }
+    // })
+
+    // var app3 = new Vue({
+    //   el: '#app-3',
+    //   data: {
+    //     seen: true
+    //   }
+    // })
+    // var app2 = new Vue({
+    //   el: '#app-2',
+    //   data: {
+    //     message: 'You loaded this page on ' + new Date().toLocaleString(),
+    //     name: "ohishi"
+    //   }
+    // })
+    // var app = new Vue({
+    //   el: "#app",
+    //   data: {
+    //     message: "hello",
+    //     name: "takashi"
+    //   }
+    // })
+  </script>
+</html>
