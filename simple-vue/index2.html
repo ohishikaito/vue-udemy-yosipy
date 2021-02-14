@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th>ID</th>
+          <th>ユーザ名</th>
+          <th>削除</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(user,index) in users">
+          <td>@{{ user.id }}</td>
+          <td>@{{ user.email }}</td>
+          <td><button class="btn btn-danger" v-on:click="deleteRow(index)">削除</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- <p>{{counter}}</p>
+    <button @click="counter += 1">+1</button>
+    <p>{{otherCounter}}</p>
+    <button @click="otherCounter += 1">別の+1</button>
+    <p>{{computed}}</p>
+    <p>{{methods()}}</p> -->
+  </div>
+
+  <script>
+    // new Vue({
+    //   el: '#app',
+    //   data:{
+    //     counter: 0,
+    //     otherCounter: 0,
+    //   },
+    //   computed:{
+    //     computed: function(){
+    //       console.log("computed");　
+    //       return this.counter >3 ? '3ue': '3ika'
+    //     }
+    //   },
+    //   methods:{
+    //     methods: function(){
+    //       console.log("methods");
+    //       return this.counter > 3 ? '3ue' : '3ika'
+    //     }
+    //   }
+    // })
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        users: []
+      },
+      methods: {
+        deleteRow: function (index) {
+          this.$delete(this.users, index)
+        }
+      },
+      mounted: function () {
+        axios.get('/api/users').then(response => this.users = response.data);
+      }
+    })
+  </script>
+</body>
+</html>

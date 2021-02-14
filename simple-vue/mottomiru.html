@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.17.1/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.5/lodash.min.js"></script>
+  <title>Vue App</title>
+</head>
+
+<body>
+  <div id="app">
+    <button @click="isEditing = !isEditing">
+      Toggle
+    </button>
+    <transition name="fade" mode="out-in">
+      <button v-if="isEditing" key="save" >
+        Save1
+      </button>
+      <button v-else key="edit">
+        Edit1
+      </button>
+    </transition>
+  </div>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        isEditing: true
+      }
+    });
+  </script>
+  <style>
+    .fade-enter-active, .fade-leave-active {
+      transition: all 0.5s;
+    }
+    .fade-enter, .fade-leave-to {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+  </style>
+</body>
+
+</html>
